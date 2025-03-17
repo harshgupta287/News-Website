@@ -1,12 +1,24 @@
-# React + Vite
+# Trendy News 📰
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Trendy News is a React-based news application that fetches top headlines from the NewsAPI and displays them in a user-friendly format. Users can search for specific news topics and explore different categories like Sports, Politics, Entertainment, Health, Fitness, and Crime.
 
-Currently, two official plugins are available:
+## Features ✨
+- Fetches real-time news articles from [NewsAPI](https://newsapi.org/).
+- Search functionality to look for specific news topics.
+- Category-based news filtering.
+- Responsive UI with dynamic news updates.
+- Clickable news cards to read full articles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation & Setup 🛠
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/harshgupta287/News-Website.git
+2. Navigate to the project directory:
+   ```sh
+   cd News-Website
+3. Install dependencies:
+   ```sh
+   npm install
+4. Run the application:
+   ```sh
+   npm start
