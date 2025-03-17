@@ -1,60 +1,62 @@
-import React, { useEffect, useState } from 'react';
-import Card from './Card';
+import React, { useEffect, useState } from 'react'
+import Card from './Card'
 
 const Newsapp = () => {
-    const [search, setSearch] = useState("All");
+    const [search, setSearch] = useState("India");
     const [newsData, setNewsData] = useState(null);
-    const API_KEY = "a672c78c0284410fabf6ca6a59ea053f";
+    const API_KEY = "9c3ed8ee95884dec979460a60f96675b";
 
     const getData = async () => {
-        try {
-            const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
-            const jsonData = await response.json();
-            setNewsData(jsonData.articles.slice(0, 10));
-        } catch (error) {
-            console.error("Error fetching news:", error);
-        }
+        const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
+        const jsonData = await response.json();
+        let dt = jsonData.articles.slice(0, 9);
+        setNewsData(dt);
     };
 
+    // Fetch data when `search` changes
     useEffect(() => {
         getData();
-    }, [search]); // Now fetches news when `search` changes
+    }, [search]);  // Now `getData` runs automatically when `search` updates
 
-    const handleSearch = () => {
-        getData();
+    const handleInput = (e) => {
+        setSearch(e.target.value);
     };
 
-    const handleCategoryClick = (category) => {
-        setSearch(category);
+    const userInput = (event) => {
+        setSearch(event.target.value); // Update search state
     };
 
     return (
         <div>
             <nav>
-                <h1>Trendy News</h1>
-                <ul>
-                    <li onClick={() => handleCategoryClick("all")}>All News</li>
-                    <li onClick={() => handleCategoryClick("trending")}>Trending</li>
+                <div>
+                    <h1>Trendy News</h1>
+                </div>
+                <ul style={{ display: "flex", gap: "11px" }}>
+                    <a style={{ fontWeight: 600, fontSize: "17px" }}>All News</a>
+                    <a style={{ fontWeight: 600, fontSize: "17px" }}>Trending</a>
                 </ul>
-                <div className="searchBar">
-                    <input type="text" placeholder="Search News" value={search} onChange={(e) => setSearch(e.target.value)} />
-                    <button onClick={handleSearch}>Search</button>
+                <div className='searchBar'>
+                    <input type='text' placeholder='Search News' value={search} onChange={handleInput} />
+                    <button onClick={getData}>Search</button>
                 </div>
             </nav>
-
-            {/* Category Buttons */}
-            <div className="categoryBtn">
-                {["sport", "politics", "entertainment", "health", "fitness"].map(category => (
-                    <button key={category} onClick={() => handleCategoryClick(category)}>{category.charAt(0).toUpperCase() + category.slice(1)}</button>
-                ))}
+            <div>
+                <p className='head'>Stay Updated with TrendyNews</p>
+            </div>
+            <div className='categoryBtn'>
+                <button onClick={userInput} value="Sport">Sports</button>
+                <button onClick={userInput} value="Politics">Politics</button>
+                <button onClick={userInput} value="Entertainment">Entertainment</button>
+                <button onClick={userInput} value="Health">Health</button>
+                <button onClick={userInput} value="Fitness">Fitness</button>
             </div>
 
-            {/* News Cards */}
-            <div className="cardContainer">
-                {newsData ? <Card data={newsData} /> : <p>Loading news...</p>}
+            <div>
+                {newsData ? <Card data={newsData} /> : null}
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Newsapp;
