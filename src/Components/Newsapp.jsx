@@ -4,7 +4,7 @@ import Card from './Card'
 const Newsapp = () => {
     const [search, setSearch] = useState("India");
     const [newsData, setNewsData] = useState(null);
-    const API_KEY = "9c3ed8ee95884dec979460a60f96675b";
+    const API_KEY = "a672c78c0284410fabf6ca6a59ea053f";
 
     const getData = async () => {
         const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
@@ -16,7 +16,7 @@ const Newsapp = () => {
     // Fetch data when `search` changes
     useEffect(() => {
         getData();
-    }, [search]);  // Now `getData` runs automatically when `search` updates
+    }, [search]);
 
     const handleInput = (e) => {
         setSearch(e.target.value);
@@ -50,6 +50,7 @@ const Newsapp = () => {
                 <button onClick={userInput} value="Entertainment">Entertainment</button>
                 <button onClick={userInput} value="Health">Health</button>
                 <button onClick={userInput} value="Fitness">Fitness</button>
+                <button onClick={userInput} value="Crime">Crime</button>
             </div>
 
             <div>
