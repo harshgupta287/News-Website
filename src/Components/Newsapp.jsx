@@ -39,10 +39,25 @@ const Newsapp = () => {
                 <div>
                     <h1>Trendy News</h1>
                 </div>
-                <ul style={{ display: "flex", gap: "11px" }}>
-                    <a style={{ fontWeight: 600, fontSize: "17px" }}>All News</a>
-                    <a style={{ fontWeight: 600, fontSize: "17px" }}>Trending</a>
+                <ul style={{ display: "flex", gap: "11px", listStyle: "none", padding: 0 }}>
+                    <li>
+                        <button 
+                            style={{color: "white", fontWeight: 600, fontSize: "17px", cursor: "pointer", border: "none", background: "none" }} 
+                            onClick={() => handleCategoryClick({ target: { value: "All News" } })}
+                        >
+                            All News
+                        </button>
+                    </li>
+                    <li>
+                        <button 
+                            style={{color: "white", fontWeight: 600, fontSize: "17px", cursor: "pointer", border: "none", background: "none" }} 
+                            onClick={() => handleCategoryClick({ target: { value: "Trending" } })}
+                        >
+                            Trending
+                        </button>
+                    </li>
                 </ul>
+
                 <div className='searchBar'>
                     <input type='text' placeholder='Search News' value={search} onChange={handleInput} />
                     <button onClick={getData}>Search</button>
