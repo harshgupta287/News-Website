@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import Card from './Card'
+import React, { useEffect, useState } from 'react';
+import Card from './Card';
 
 const Newsapp = () => {
     const [search, setSearch] = useState("India");
     const [newsData, setNewsData] = useState(null);
-    const API_KEY = "a672c78c0284410fabf6ca6a59ea053f";
+    const [page, setPage] = useState(1); // Page state for pagination
+    const API_KEY = "bcc1d8445e254e9cb1bce4a9c68f62ef";
 
     const getData = async () => {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
+        const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&page=${page}&pageSize=12&apiKey=${API_KEY}`);
         const jsonData = await response.json();
-        let dt = jsonData.articles.slice(0, 12);
-        setNewsData(dt);
+        setNewsData(jsonData.articles);
     };
 
-    // Fetch data when `search` changes
+    // Fetch data when `search` or `page` changes
     useEffect(() => {
         getData();
-    }, [search]);
+    }, [search, page]);
 
     const handleInput = (e) => {
         setSearch(e.target.value);
     };
 
-    const userInput = (event) => {
-        setSearch(event.target.value); // Update search state
+    const handleCategoryClick = (event) => {
+        setSearch(event.target.value);
     };
 
     return (
@@ -41,23 +41,37 @@ const Newsapp = () => {
                     <button onClick={getData}>Search</button>
                 </div>
             </nav>
+            
             <div>
                 <p className='head'>Stay Updated with TrendyNews</p>
             </div>
+
             <div className='categoryBtn'>
-                <button onClick={userInput} value="Sport">Sports</button>
-                <button onClick={userInput} value="Politics">Politics</button>
-                <button onClick={userInput} value="Entertainment">Entertainment</button>
-                <button onClick={userInput} value="Health">Health</button>
-                <button onClick={userInput} value="Fitness">Fitness</button>
-                <button onClick={userInput} value="Crime">Crime</button>
+                <button onClick={handleCategoryClick} value="Sport">Sports</button>
+                <button onClick={handleCategoryClick} value="Politics">Politics</button>
+                <button onClick={handleCategoryClick} value="Entertainment">Entertainment</button>
+                <button onClick={handleCategoryClick} value="Health">Health</button>
+                <button onClick={handleCategoryClick} value="Fitness">Fitness</button>
+                <button onClick={handleCategoryClick} value="Crime">Crime</button>
             </div>
 
             <div>
                 {newsData ? <Card data={newsData} /> : null}
             </div>
+
+            {/* Pagination Buttons */}
+            <div className='pagination'>
+                <button disabled={page === 1} onClick={() => setPage(page - 1)}>Back</button>
+                <span>Page {page}</span>
+                <button onClick={() => setPage(page + 1)}>Next</button>
+            </div>
+
+            {/* Footer */}
+            <footer className="footer">
+                <p>© {new Date().getFullYear()} Trendy News. All Rights Reserved.</p>
+            </footer>
         </div>
-    )
-}
+    );
+};
 
 export default Newsapp;
