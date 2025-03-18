@@ -20,10 +20,17 @@ const Newsapp = () => {
 
     const handleInput = (e) => {
         setSearch(e.target.value);
+        setPage(1); // Reset to page 1 when search input changes
+    };
+
+    const handleSearchClick = () => {
+        setPage(1); // Reset to page 1 when search button is clicked
+        getData();
     };
 
     const handleCategoryClick = (event) => {
         setSearch(event.target.value);
+        setPage(1); // Reset to page 1 when category changes
     };
 
     return (
