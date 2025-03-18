@@ -11,107 +11,179 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-nav{
+
+/* Navigation Bar */
+nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  background-color: lightblue;
-  padding: 9px;
-}
-nav input{
-  width: 250px;
-  text-decoration: none;
-  padding: 9px;
-  font-size: 18px;
-  border: none;
-}
-.searchBar{
-  display: flex;
-  align-items: center;
-  gap: 11px;
-}
-nav button{
-  width: 70px;
-  height: 38px;
-  background-color: blue;
-  border: none;
-  border-radius: 2px;
+  background-color: #2c3e50; /* Dark navy blue for a professional look */
   color: white;
-  font-size: 16px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.3s ease;
   cursor: pointer;
 }
-nav ul{
-  display: flex;
-  gap: 11px;
 
+nav a:hover {
+  color: #e74c3c; /* Red accent color */
 }
-.cardContainer{
+
+/* Search Bar */
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchBar input {
+  padding: 8px;
+  border: 2px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  width: 200px;
+}
+
+.searchBar button {
+  background-color: #e74c3c; /* Red accent for CTA */
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.searchBar button:hover {
+  background-color: #c0392b;
+}
+
+/* Headline */
+.head {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #2c3e50;
+}
+
+/* Category Buttons */
+.categoryBtn {
   display: flex;
   justify-content: center;
-  gap:41px;
+  gap: 15px;
+  margin-top: 20px;
   flex-wrap: wrap;
-
 }
 
-.card{
-  width: 320px;
-  box-shadow: 0px 4px 4px 4px rgb(255, 255, 255);
-  background-color: white;
-  border-radius: 3px;
-  margin-top: 21px;
-  border: 1px solid rgb(236, 236, 236);
+.categoryBtn button {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #34495e; /* Deep blue-gray */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-.card img{
+
+.categoryBtn button:hover {
+  background-color: #e74c3c; /* Red accent */
+  transform: scale(1.05);
+}
+
+/* Card Container */
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Card */
+.card {
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Image */
+.card img {
   width: 100%;
   height: 180px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-
+  object-fit: cover;
 }
-.card .title{
-  font-weight: 600;
+
+/* Content */
+.content {
+  padding: 15px;
+}
+
+.content .title {
   font-size: 18px;
-  margin-top: -7px;
-}
-.card .title:hover{
-  border-bottom: 1px solid black;
+  font-weight: bold;
+  color: #2c3e50; /* Dark blue for professionalism */
+  text-decoration: none;
   cursor: pointer;
-}
-.card .content{
-  padding: 9px;
-}
-.card button{
-  background-color: rgb(29, 162, 214);
-  border: none;
-  cursor: pointer;
-  width: 80px;
-  height: 28px;
-  color: white;
-  font-size: 13px;
-  border-radius: 2px;
-}
-.categoryBtn{
-  display: flex;
-  justify-content: center;
-  gap: 11px;
-}
-.categoryBtn button{
-  gap: 11px;
-  width: 130px;
-  height: 33px;
-  background-color: rgb(255, 108, 108);
-  border: none;
-  outline: none;
-  font-size: 18px;
-  border-radius: 16px;
-  color: white;
-  cursor: pointer;
-  padding: 2px;
+  display: block;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
+.content .title:hover {
+  color: #d63031; /* Red accent for news urgency */
+}
 
-.head{
-  text-align: center;
-  font-weight: 600;
-  font-size: 26px;
+.content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Read More Button */
+.content button {
+  background-color: #d63031; /* Red theme for CTA */
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.content button:hover {
+  background-color: #b71c1c;
 }

@@ -9,7 +9,7 @@ const Newsapp = () => {
     const getData = async () => {
         const response = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
         const jsonData = await response.json();
-        let dt = jsonData.articles.slice(0, 9);
+        let dt = jsonData.articles.slice(0, 12);
         setNewsData(dt);
     };
 
