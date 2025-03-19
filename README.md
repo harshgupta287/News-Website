@@ -22,3 +22,7 @@ Trendy News is a React-based news application that fetches top headlines from th
 4. Run the application:
    ```sh
    npm run dev
+
+## Screenshots
+![Screenshot 1](./screenshots/s1.jpg)
+![Screenshot 2](./screenshots/s2.jpg)

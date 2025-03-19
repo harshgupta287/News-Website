@@ -13,24 +13,23 @@ const Newsapp = () => {
         setNewsData(jsonData.articles);
     };
 
-    // Fetch data when `search` or `page` changes
     useEffect(() => {
         getData();
     }, [search, page]);
 
     const handleInput = (e) => {
         setSearch(e.target.value);
-        setPage(1); // Reset to page 1 when search input changes
+        setPage(1); 
     };
 
     const handleSearchClick = () => {
-        setPage(1); // Reset to page 1 when search button is clicked
+        setPage(1);
         getData();
     };
 
     const handleCategoryClick = (event) => {
         setSearch(event.target.value);
-        setPage(1); // Reset to page 1 when category changes
+        setPage(1);
     };
 
     return (
@@ -43,7 +42,7 @@ const Newsapp = () => {
                     <li>
                         <button 
                             style={{color: "white", fontWeight: 600, fontSize: "17px", cursor: "pointer", border: "none", background: "none" }} 
-                            onClick={() => handleCategoryClick({ target: { value: "All News" } })}
+                            onClick={handleCategoryClick} value="All News"
                         >
                             All News
                         </button>
@@ -51,7 +50,7 @@ const Newsapp = () => {
                     <li>
                         <button 
                             style={{color: "white", fontWeight: 600, fontSize: "17px", cursor: "pointer", border: "none", background: "none" }} 
-                            onClick={() => handleCategoryClick({ target: { value: "Trending" } })}
+                            onClick={handleCategoryClick} value="Trending"
                         >
                             Trending
                         </button>
